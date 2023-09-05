@@ -9,16 +9,15 @@ import {
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigation } from "@react-navigation/native";
 import { Logo } from "../assets";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import MessageCard from "../components";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { firestoreDB } from "../config/firebase.config";
-import { Ionicons } from "@expo/vector-icons";
-import { MessageCard } from "../components";
 
 const HomeScreen = () => {
   const user = useSelector((state) => state.user.user);
-
   const [isLoading, setIsLoading] = useState(true);
   const [chats, setChats] = useState(null);
 
@@ -36,9 +35,10 @@ const HomeScreen = () => {
       setIsLoading(false);
     });
 
-    //  Return the unsubscribe function to stop listening to the updates
+    //  Return the unsubscribe funciton to stop listening to the updates
     return unsubscribe;
   }, []);
+
   return (
     <View className="flex-1">
       <SafeAreaView>

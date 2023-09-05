@@ -21,16 +21,13 @@ const LoginScreen = () => {
   const [alertMessage, setAlertMessage] = useState(null);
 
   const handleLogin = async () => {
-    console.log(email, password);
     if (getEmailValidationStatus && email !== "") {
       await signInWithEmailAndPassword(firebaseAuth, email, password)
         .then((userCred) => {
           if (userCred) {
-            console.log("User Id:", userCred?.user.uid);
             getDoc(doc(firestoreDB, "users", userCred?.user.uid)).then(
               (docSnap) => {
                 if (docSnap.exists()) {
-                  console.log("User Data : ", docSnap.data());
                   dispatch(SET_USER(docSnap.data()));
                 }
               }
@@ -38,7 +35,6 @@ const LoginScreen = () => {
           }
         })
         .catch((err) => {
-          console.log("Error : ", err.message);
           if (err.message.includes("wrong-password")) {
             setAlert(true);
             setAlertMessage("Password Mismatch");

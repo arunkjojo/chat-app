@@ -37,8 +37,6 @@ const SignUpScreen = () => {
   };
 
   const handleSignUp = async () => {
-    console.log(email, name, password);
-
     if (getEmailValidationStatus && email !== "") {
       await createUserWithEmailAndPassword(firebaseAuth, email, password).then(
         (userCred) => {

@@ -10,14 +10,13 @@ import {
   Image,
 } from "react-native";
 import React, { useLayoutEffect, useRef, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
 import {
   Entypo,
   FontAwesome,
   FontAwesome5,
   MaterialIcons,
 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import {
   addDoc,
   collection,
@@ -28,16 +27,15 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { firestoreDB } from "../config/firebase.config";
+import { useSelector } from "react-redux";
 
 const ChatScreen = ({ route }) => {
   const { room } = route.params;
   const navigation = useNavigation();
-
-  const user = useSelector((state) => state.user.user);
-
   const [isLoading, setIsLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState(null);
+  const user = useSelector((state) => state.user.user);
 
   const textInputRef = useRef(null);
 

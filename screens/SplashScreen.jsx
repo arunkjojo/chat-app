@@ -1,11 +1,11 @@
+import { View, Text, Image, ActivityIndicator } from "react-native";
 import React, { useLayoutEffect } from "react";
-import { ActivityIndicator, Image, View } from "react-native";
 import { Logo } from "../assets";
 import { firebaseAuth, firestoreDB } from "../config/firebase.config";
 import { useNavigation } from "@react-navigation/native";
 import { doc, getDoc } from "firebase/firestore";
-import { useDispatch } from "react-redux";
 import { SET_USER } from "../context/actions/userAction";
+import { useDispatch } from "react-redux";
 
 const SplashScreen = () => {
   const navigation = useNavigation();
@@ -21,7 +21,6 @@ const SplashScreen = () => {
         getDoc(doc(firestoreDB, "users", userCred?.uid))
           .then((docSnap) => {
             if (docSnap.exists()) {
-              console.log("User Data : ", docSnap.data());
               dispatch(SET_USER(docSnap.data()));
             }
           })
@@ -31,7 +30,7 @@ const SplashScreen = () => {
             }, 2000);
           });
       } else {
-        navigation.replace("LoginScreen");
+        navigation.replace("LgoinScreen");
       }
     });
   };

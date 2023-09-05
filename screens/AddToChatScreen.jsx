@@ -1,16 +1,14 @@
-import { View, TouchableOpacity, Image, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
 import React, { useState } from "react";
+import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
-import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { doc, setDoc } from "firebase/firestore";
 import { firestoreDB } from "../config/firebase.config";
 
 const AddToChatScreen = () => {
   const navigation = useNavigation();
-
   const user = useSelector((state) => state.user.user);
-
   const [addChat, setAddChat] = useState("");
 
   const createNewChat = async () => {
@@ -61,14 +59,13 @@ const AddToChatScreen = () => {
           <View className="w-full px-4 flex-row items-center justify-between py-3 rounded-xl border border-gray-200 space-x-3">
             {/* icons */}
             <Ionicons name="chatbubbles" size={24} color={"#777"} />
-
-            {/* text input */}
+            {/* textinput */}
             <TextInput
-              className="flex-1 text-lg text-primaryText -mt-2 h-12 w-full"
-              placeholder="Create a Chat"
+              className="flex-1 text-lg text-primaryText -mt-2  h-12 w-full"
+              placeholder="Create a chat"
               placeholderTextColor={"#999"}
               value={addChat}
-              onChange={(text) => setAddChat(text)}
+              onChangeText={(text) => setAddChat(text)}
             />
 
             {/* icon */}

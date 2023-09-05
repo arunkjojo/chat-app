@@ -1,2 +1,2 @@
 export { default as UserTextInput } from "./UserTextInput";
-export { default as MessageCard } from "./MessageCard";
+export { default as MasterCard } from "./MasterCard";

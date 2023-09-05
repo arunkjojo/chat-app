@@ -7,14 +7,13 @@ import {
 } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { useDispatch, useSelector } from "react-redux";
 import { Entypo, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { useDispatch, useSelector } from "react-redux";
 import { firebaseAuth } from "../config/firebase.config";
 import { SET_USER_NULL } from "../context/actions/userAction";
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
-
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
@@ -37,7 +36,6 @@ const ProfileScreen = () => {
           <Entypo name="dots-three-vertical" size={24} color="#555" />
         </TouchableOpacity>
       </View>
-
       {/* profile */}
       <View className="items-center justify-center">
         <View className="relative border-2 border-primary p-1 rounded-full">
